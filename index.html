@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>BMI計算機</title>
+    <link rel="stylesheet" href="./stylesheets/all.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="bg-dark py-5">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-3 text-center">
+            <a href="index.html"
+              ><img src="img/BMICLogo.png" class="img-fluid" alt="" />
+              <h1 class="text-hide mb-0">BMI計算機</h1></a
+            >
+          </div>
+          <div class="col-md-3">
+            <form>
+              <div class="form-group">
+                <label for="height" class="text-warning">身高 cm</label>
+                <input
+                  type="number"
+                  class="form-control border-warning rounded-lg bg-transparent-gray placeholder-white text-light"
+                  id="height"
+                  name="height"
+                  placeholder="請輸入身高"
+                />
+              </div>
+              <div class="form-group">
+                <label for="weight" class="text-warning">體重 kg</label>
+                <input
+                  type="number"
+                  class="form-control border-warning rounded-lg bg-transparent-gray placeholder-white text-light"
+                  id="weight"
+                  name="weight"
+                  placeholder="請輸入體重"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="col-md-3 d-flex justify-content-center">
+            <button
+              class="btn btn-warning btn-result rounded-circle text-center text-dark"
+              id="btnResult"
+            >
+              <span class="h4 mb-0">看結果</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="bg-light h-revise">
+      <div class="container py-5">
+        <h2 class="text-dark h4 text-center mb-4">BMI 紀錄</h2>
+        <ul class="list-group" id="BMIList">
+          <li class="list-group-item mb-2 position-relative delete">
+            <div class="tag tag-normal"></div>
+            <a href="#" class="btnDelete material-icons">clear</a>
+            <div class="row no-gutters">
+              <div
+                class="col-md-2 col-6 h4 mb-0 d-flex justify-content-center align-items-center"
+              >
+                <span id="record-Status">輕微過重</span>
+              </div>
+              <div
+                class="col-md-3 col-6 h4 mb-0 ml-md-auto d-flex justify-content-center align-items-center"
+              >
+                <span class="h6 mb-0 mr-2">BMI</span
+                ><span id="record-BMI">20.90</span>
+              </div>
+              <div
+                class="col-md-3 col-6 h4 mb-0 mt-md-0 mt-2 d-flex justify-content-center align-items-center"
+              >
+                <span class="h6 mb-0 mr-2">weight</span
+                ><span id="record-Weight">70kg</span>
+              </div>
+              <div
+                class="col-md-3 col-6 h4 mb-0 mt-md-0 mt-2 d-flex justify-content-center align-items-center"
+              >
+                <span class="h6 mb-0 mr-2">height</span
+                ><span id="record-Height">180cm</span>
+              </div>
+              <div
+                class="col mt-md-0 mt-2 d-flex justify-content-center align-items-center"
+              >
+                <span style="font-size: 10px" id="record-Time">08-11-2019</span>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item mb-2 position-relative">
+            <div class="tag tag-normal"></div>
+            <div class="row no-gutters">
+              <div
+                class="col-md-2 col-6 h4 mb-0 d-flex justify-content-center align-items-center"
+              >
+                <span>輕微過重</span>
+              </div>
+              <div
+                class="col-md-3 col-6 h4 mb-0 ml-md-auto d-flex justify-content-center align-items-center"
+              >
+                <span class="h6 mb-0 mr-2">BMI</span><span>20.90</span>
+              </div>
+              <div
+                class="col-md-3 col-6 h4 mb-0 mt-md-0 mt-2 d-flex justify-content-center align-items-center"
+              >
+                <span class="h6 mb-0 mr-2">weight</span><span>70kg</span>
+              </div>
+              <div
+                class="col-md-3 col-6 h4 mb-0 mt-md-0 mt-2 d-flex justify-content-center align-items-center"
+              >
+                <span class="h6 mb-0 mr-2">height</span><span>180cm</span>
+              </div>
+              <div
+                class="col mt-md-0 mt-2 d-flex justify-content-center align-items-center"
+              >
+                <span style="font-size: 10px">08-11-2019</span>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item mb-2 position-relative">
+            <div class="tag tag-normal"></div>
+            <div class="row no-gutters">
+              <div
+                class="col-md-2 col-6 h4 mb-0 d-flex justify-content-center align-items-center"
+              >
+                <span>輕微過重</span>
+              </div>
+              <div
+                class="col-md-3 col-6 h4 mb-0 ml-md-auto d-flex justify-content-center align-items-center"
+              >
+                <span class="h6 mb-0 mr-2">BMI</span><span>20.90</span>
+              </div>
+              <div
+                class="col-md-3 col-6 h4 mb-0 mt-md-0 mt-2 d-flex justify-content-center align-items-center"
+              >
+                <span class="h6 mb-0 mr-2">weight</span><span>70kg</span>
+              </div>
+              <div
+                class="col-md-3 col-6 h4 mb-0 mt-md-0 mt-2 d-flex justify-content-center align-items-center"
+              >
+                <span class="h6 mb-0 mr-2">height</span><span>180cm</span>
+              </div>
+              <div
+                class="col mt-md-0 mt-2 d-flex justify-content-center align-items-center"
+              >
+                <span style="font-size: 10px">08-11-2019</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <footer class="bg-warning py-4 text-center">
+      <img src="img/BMICLogoDark.png" style="width: 55px;height: 55px;" />
+    </footer>
+    <script src="js/vendor.js"></script>
+    <script src="js/all.js"></script>
+  </body>
+</html>
