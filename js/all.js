@@ -19,7 +19,7 @@ BMIList.addEventListener("click", function(e) {
   if (e.target.nodeName !== "A") {
     return;
   }
-  deleteItem(e.target.dataset.num);
+  deleteItem(e);
 });
 //監聽END
 //初始化
@@ -184,8 +184,9 @@ function btnResultInit() {
 }
 //刪除資料
 function deleteItem(e) {
+  e.preventDefault();
   let localData = JSON.parse(localStorage.getItem("BMIData")) || [];
-  localData.splice(e, 1);
+  localData.splice(e.target.dataset.num, 1);
   let BMIArryStr = JSON.stringify(localData);
   localStorage.setItem("BMIData", BMIArryStr);
   pageUpdate(localData);
