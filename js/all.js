@@ -1,12 +1,13 @@
 let BMIArray = [];
 //存取變數
 let btnResult = document.querySelector("#btnResult");
+let btnResultSpan = document.querySelector("#btnResult span");
 let BMIList = document.querySelector("#BMIList");
 let inputHeight = document.querySelector("#height");
 let inputWeight = document.querySelector("#weight");
 let recordStatus = document.querySelector("#record-Status");
 let recordBMI = document.querySelector("#record-BMI");
-let recordWeight = document.querySelector("r#ecord-Weight");
+let recordWeight = document.querySelector("#record-Weight");
 let recordHeight = document.querySelector("#record-Height");
 let recordTime = document.querySelector("#record-Time");
 //
@@ -58,6 +59,10 @@ function bodyData() {
     console.log("有觸發喔！！");
     return;
   }
+  if (inputHeight.value == "" || inputWeight.value == "") {
+    alert("請輸入資料");
+    return;
+  }
   //建立物件來儲存各項資料
   let BMIObj = {};
   BMIObj.height = inputHeight.value;
@@ -80,16 +85,15 @@ function bodyData() {
   }
   BMIObj.bmiData = bmiData;
   BMIObj.date = date();
-  console.log("此次測量產生的物件資料是" + JSON.stringify(BMIObj));
+  // console.log("此次測量產生的物件資料是" + JSON.stringify(BMIObj));
   let localData = JSON.parse(localStorage.getItem("BMIData")) || [];
   // console.log(localData);
   localData.push(BMIObj);
   // console.log(BMIArray);
   let BMIArryStr = JSON.stringify(localData);
   localStorage.setItem("BMIData", BMIArryStr);
-  console.log("localStorage儲存成功");
   pageUpdate(localData);
-  btnResultUpdate(BMIObj.status);
+  btnResultUpdate(BMIObj);
 }
 //將結果渲染到頁面
 function pageUpdate(data) {
@@ -105,7 +109,7 @@ function pageUpdate(data) {
     } else if (data[i].status == "過重") {
       let items = itemsUpdate("OverWeight-l", data);
       content += items;
-    } else if (data[i].status == "輕度肥胖" || "中度肥胖") {
+    } else if (data[i].status == "輕度肥胖" || data[i].status == "中度肥胖") {
       let items = itemsUpdate("OverWeight-m", data);
       content += items;
     } else {
@@ -137,32 +141,38 @@ function itemsUpdate(status, data) {
   return item;
 }
 //BtnResult結果渲染
-function btnResultUpdate(status) {
-  console.log(btnResult.attributes["class"].value);
-  if (status == "過輕") {
+function btnResultUpdate(data) {
+  // console.log(btnResult.attributes["class"].value);
+  if (data.status == "過輕") {
     btnResult.attributes["class"].value =
       "btn btn-warning btn-result rounded-circle text-center text-dark result result-UnderWeight";
     btnResult.dataset.switch = "true";
-  } else if (status == "理想") {
+    btnResultSpan.innerHTML = data.bmiData;
+  } else if (data.status == "理想") {
     btnResult.attributes["class"].value =
       "btn btn-warning btn-result rounded-circle text-center text-dark result result-normal";
     btnResult.dataset.switch = "true";
-  } else if (status == "過重") {
+    btnResultSpan.innerHTML = data.bmiData;
+  } else if (data.status == "過重") {
     btnResult.attributes["class"].value =
       "btn btn-warning btn-result rounded-circle text-center text-dark result result-OverWeight-l";
     btnResult.dataset.switch = "true";
-  } else if (status == "輕度肥胖") {
+    btnResultSpan.innerHTML = data.bmiData;
+  } else if (data.status == "輕度肥胖") {
     btnResult.attributes["class"].value =
       "btn btn-warning btn-result rounded-circle text-center text-dark result result-OverWeight-m";
     btnResult.dataset.switch = "true";
-  } else if (status == "中度肥胖") {
+    btnResultSpan.innerHTML = data.bmiData;
+  } else if (data.status == "中度肥胖") {
     btnResult.attributes["class"].value =
       "btn btn-warning btn-result rounded-circle text-center text-dark result result-OverWeight-d";
     btnResult.dataset.switch = "true";
+    btnResultSpan.innerHTML = data.bmiData;
   } else {
     btnResult.attributes["class"].value =
       "btn btn-warning btn-result rounded-circle text-center text-dark result result-OverWeight-s";
     btnResult.dataset.switch = "true";
+    btnResultSpan.innerHTML = data.bmiData;
   }
 }
 //BtnResult初始化
@@ -170,6 +180,7 @@ function btnResultInit() {
   btnResult.attributes["class"].value =
     "btn btn-warning btn-result rounded-circle text-center text-dark";
   btnResult.removeAttribute("data-switch");
+  btnResultSpan.innerHTML = "看結果";
 }
 //刪除資料
 function deleteItem(e) {

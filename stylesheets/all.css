@@ -5067,6 +5067,18 @@ a.text-orange-m:hover, a.text-orange-m:focus {
   background-color: transparent;
   color: #ffffff !important;
   pointer-events: none; }
+  .result span {
+    position: relative;
+    pointer-events: none; }
+    .result span:before {
+      display: block;
+      content: "BMI";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ffffff;
+      font-size: 14px; }
   .result:hover {
     background-color: rgba(255, 255, 255, 0.1); }
   .result:before {
@@ -5097,6 +5109,8 @@ a.text-orange-m:hover, a.text-orange-m:focus {
   .result.result-normal {
     color: #86D73F !important;
     border-color: #86D73F; }
+    .result.result-normal span:before {
+      color: #86D73F; }
     .result.result-normal:before {
       color: #86D73F; }
     .result.result-normal:after {
@@ -5104,6 +5118,8 @@ a.text-orange-m:hover, a.text-orange-m:focus {
   .result.result-UnderWeight {
     color: #31BAF9 !important;
     border-color: #31BAF9; }
+    .result.result-UnderWeight span:before {
+      color: #31BAF9; }
     .result.result-UnderWeight:before {
       color: #31BAF9;
       content: "過輕"; }
@@ -5112,6 +5128,8 @@ a.text-orange-m:hover, a.text-orange-m:focus {
   .result.result-OverWeight-l {
     color: #FF982D !important;
     border-color: #FF982D; }
+    .result.result-OverWeight-l span:before {
+      color: #FF982D; }
     .result.result-OverWeight-l:before {
       color: #FF982D;
       content: "過重"; }
@@ -5120,6 +5138,8 @@ a.text-orange-m:hover, a.text-orange-m:focus {
   .result.result-OverWeight-m {
     color: #FF6C03 !important;
     border-color: #FF6C03; }
+    .result.result-OverWeight-m span:before {
+      color: #FF6C03; }
     .result.result-OverWeight-m:before {
       color: #FF6C03;
       content: "輕度肥胖";
@@ -5127,17 +5147,21 @@ a.text-orange-m:hover, a.text-orange-m:focus {
     .result.result-OverWeight-m:after {
       background-color: #FF6C03; }
   .result.result-OverWeight-d {
-    color: #FF1200 !important;
-    border-color: #FF1200; }
+    color: #FF6C03 !important;
+    border-color: #FF6C03; }
+    .result.result-OverWeight-d span:before {
+      color: #FF6C03; }
     .result.result-OverWeight-d:before {
-      color: #FF1200;
+      color: #FF6C03;
       content: "中度肥胖";
       right: -140%; }
     .result.result-OverWeight-d:after {
-      background-color: #FF1200; }
+      background-color: #FF6C03; }
   .result.result-OverWeight-s {
     color: #FF1200 !important;
     border-color: #FF1200; }
+    .result.result-OverWeight-s span:before {
+      color: #FF1200; }
     .result.result-OverWeight-s:before {
       color: #FF1200;
       content: "重度肥胖";
